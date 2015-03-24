@@ -26,6 +26,10 @@ class Array
     UniqRerollOutput()  
   end
 end
+
 @BannerArray = ["Banner1", "Banner2", "Banner3", "Banner4", "Banner5", "Banner6", "Banner7", "Banner8", "Banner9"]
-$AlreadyOut =[] #ересь, убрать!!! 1.извлечение через параметр - это еще хуже. 2. ?
+$AlreadyOut =[] #ересь, убрать!!!
+                #1.Извлечение через параметр - это еще хуже.
+                #2.Писать этот массив в последний элемент? Долго.
+#Допустима глоб. переменная - в случае многих BannerArray и если она хэш-массив
 18.times { @BannerArray.OutUniqBanner() }

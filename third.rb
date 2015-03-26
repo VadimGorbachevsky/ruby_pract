@@ -3,7 +3,7 @@ input_array = ["Banner1", "Banner2", "Banner3", "Banner4", "Banner5", "Banner6",
 class BannerArray < Array
   def initialize(*content)
     @already_out = []
-    self[0] = content
+    content == [] ? self[0] = "Empty" : self[0] = content
     self.flatten!
   end
     
@@ -32,5 +32,7 @@ end
 banner_array1 = BannerArray.new(input_array)
 10.times { banner_array1.out_uniq_banner }
 #Now we can create many banners collections whith own uniq counters
-banner_array2 = BannerArray.new('NewBanner1', 'NewBanner2', 'NewBanner3')
+banner_array2 = BannerArray.new("NEWBan", "NEWBan2", "NEWBan3")
 5.times { banner_array2.out_uniq_banner }
+banner_array3 = BannerArray.new()
+2.times { banner_array3.out_uniq_banner }

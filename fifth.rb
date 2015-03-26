@@ -20,20 +20,20 @@ def decoding_string(string)
   array = string.split(",")
 end
 
-def compare_ip_with_base?(curren_ip, base_ip)
+def compare_ip_with_base?(current_ip, base_ip)
+  encoded_ip = encoding_ip(current_ip)
   min_ip = base_ip[0].to_i
   max_ip = base_ip[1].to_i
-  if (min_ip..max_ip).include?(curren_ip)
-    puts("IP " + curren_ip.to_s + " using in " + base_ip[6].chomp + " group.")
+  if (min_ip..max_ip).include?(encoded_ip)
+    puts("IP " + current_ip.to_s + " using in " + base_ip[6].chomp + " group.")
   else
     return false
   end
 end
 
 ip = ARGV[0].to_s
-encoded_ip = encoding_ip(ip)
 ip_archive = File.open("IpToCountry.csv", "r");
 string = first_usefull_st(ip_archive, "#")
 string = ip_archive.gets until ( string == nil \
-                                  || compare_ip_with_base?(encoded_ip, decoding_string(string)) )
+                                  || compare_ip_with_base?(ip, decoding_string(string)) )
 ip_archive.close

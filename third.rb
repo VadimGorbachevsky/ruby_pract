@@ -78,3 +78,5 @@ banner_array3 = BannerArray.new()
 #banner_array4 = BannerArray.new([nil, "Hello!"])
 #banner_array4.compact!
 #banner_array4.each{|e| puts e}
+#banner_array4 << "ololo"
+#puts banner_array4

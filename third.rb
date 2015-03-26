@@ -31,8 +31,14 @@ end
 
 banner_array1 = BannerArray.new(input_array)
 10.times { banner_array1.out_uniq_banner }
-#Now we can create many banners collections whith own uniq counters
+#Now we can create many banners collections whith own uniq counters,
 banner_array2 = BannerArray.new("NEWBan", "NEWBan2", "NEWBan3")
-5.times { banner_array2.out_uniq_banner }
+puts 
+10.times do
+  banner_array2.out_uniq_banner
+  banner_array1.out_uniq_banner
+end
+puts
+#"new()" without args
 banner_array3 = BannerArray.new()
 2.times { banner_array3.out_uniq_banner }

@@ -1,7 +1,8 @@
 def output_in_LCD_view(input_number)
-  @buffer = input_number
-  @output = []
-  @numbers_calc_view = {
+  def create_out_array
+    buffer = self
+    output = []
+    numbers_calc_view = {
     1 => ['   ', '  |', '  |'],
     2 => [' _ ', ' _|', '|_ '],
     3 => [' _ ', ' _|', ' _|'],
@@ -13,23 +14,23 @@ def output_in_LCD_view(input_number)
     9 => [' _ ', '|_|', ' _|'],
     0 => [' _ ', '| |', '|_|']
     }
-
-  def create_out_array
-    @output << @numbers_calc_view[0] if @buffer == 0
-    while(@buffer > 0)
-      @output << @numbers_calc_view[@buffer % 10]
-      @buffer /= 10;
+    
+    output << numbers_calc_view[0] if buffer == 0
+    while(buffer > 0)
+      output << numbers_calc_view[buffer % 10]
+      buffer /= 10;
     end
+    return output
   end
 
   def transpose_out
-    puts(@output.reverse.transpose[0].join(" "))
-    puts(@output.reverse.transpose[1].join(" "))
-    puts(@output.reverse.transpose[2].join(" "))
+    puts(self.reverse.transpose[0].join(" "))
+    puts(self.reverse.transpose[1].join(" "))
+    puts(self.reverse.transpose[2].join(" "))
   end
   
-  create_out_array
-  transpose_out
+  output = input_number.create_out_array
+  output.transpose_out
 end
 
 def enter_error(input_number)

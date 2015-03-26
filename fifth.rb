@@ -1,3 +1,5 @@
+$stdout = File.open('logfile.log', 'w')
+
 def first_usefull_st(input_file, trash_identity_string)
   string = input_file.gets
   string = input_file.gets while string.include?(trash_identity_string)
@@ -16,15 +18,13 @@ end
 def decoding_string(string)
   string.delete!("\42")
   array = string.split(",")
-  return array
 end
 
-def compare_ip(ip, array)
-  min_ip = array[0].to_i
-  max_ip = array[1].to_i
-  if (min_ip..max_ip).include?(ip)
-    puts("This ip using in " + array[6].chomp + " group.")
-    return true
+def compare_ip_with_base?(curren_ip, base_ip)
+  min_ip = base_ip[0].to_i
+  max_ip = base_ip[1].to_i
+  if (min_ip..max_ip).include?(curren_ip)
+    puts("IP " + curren_ip.to_s + " using in " + base_ip[6].chomp + " group.")
   else
     return false
   end
@@ -35,5 +35,5 @@ encoded_ip = encoding_ip(ip)
 ip_archive = File.open("IpToCountry.csv", "r");
 string = first_usefull_st(ip_archive, "#")
 string = ip_archive.gets until ( string == nil \
-                                  || compare_ip(encoded_ip, decoding_string(string)) )
+                                  || compare_ip_with_base?(encoded_ip, decoding_string(string)) )
 ip_archive.close

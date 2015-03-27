@@ -1,8 +1,5 @@
 def array_uniq_hash(*arrays)
-  full_array = []
-  arrays.each{ |item| full_array += item }
-  full_array.flatten!
-  full_array.compact!
+  full_array = arrays.flatten.compact
   uniq_count_list = Hash.new(0)
   full_array.each{ |e| uniq_count_list[e] += 1}
   return uniq_count_list
